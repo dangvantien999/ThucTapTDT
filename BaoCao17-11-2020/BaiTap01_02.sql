@@ -40,4 +40,10 @@ SELECT Department.Name, Employee.Name, Employee.Salary
  FROM Employee e
  JOIN Department d
  ON d.Id_Department = e.Id_Department
+ AND e.Salary = (SELECT MAX(Salary) FROM Employee as e2 WHERE e2.Id_Department = e.Id_Department);
+ 
+  SELECT d.Name as Department , e.Name as Employee, e.Salary
+ FROM Employee e
+ JOIN Department d
+ ON d.Id_Department = e.Id_Department
  AND e.Salary = (SELECT MAX(Salary) FROM Employee as e2 WHERE e2.Id_Department = e.Id_Department)
